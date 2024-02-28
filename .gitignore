@@ -8,3 +8,5 @@ dist/
 # Virtualenv
 .venv
 
+# Temporary files
+.pypirc

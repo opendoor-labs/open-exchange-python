@@ -1,6 +1,6 @@
 from typing import Iterator
 
-from src.open_exchange._types import AddressFields, RentalCompsResult
+from open_exchange._types import AddressFields, RentalCompsResult
 
 
 def fetch(addresses: Iterator[AddressFields]) -> Iterator[RentalCompsResult]:

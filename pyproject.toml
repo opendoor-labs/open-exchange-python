@@ -7,10 +7,10 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "ox_data_api"
-authors = [{name = "Open Exchange Labs, Inc.", email = "ox-data-eng@opendoor.com"}]
+name = "open-exchange"
+authors = [{ name = "Open Exchange Labs, Inc.", email = "ox-data-eng@opendoor.com" }]
 readme = "README.md"
-license = {file = "LICENSE.md"}
+license = { file = "LICENSE.md" }
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",

@@ -48,13 +48,3 @@ requests = "2.27.1"
 
 [tool.poetry.group.dev.dependencies]
 flit = "^3.9.0"
-
-
-#[tool.flit.metadata]
-#module = "open_exchange"
-#author = "Open Exchange Labs, Inc."
-#author-email = ""
-#home-page = ""
-
-
-

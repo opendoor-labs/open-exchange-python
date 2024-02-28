@@ -1,0 +1,12 @@
+# Build files
+dist/
+
+# JetBrains IDEs
+.idea
+.run/
+
+# Virtualenv
+.venv
+
+# Temporary files
+.pypirc

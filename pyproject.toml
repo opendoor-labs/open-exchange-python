@@ -1,0 +1,60 @@
+# https://packaging.python.org/en/latest/specifications/pyproject-toml/#pyproject-toml-spec
+# https://flit.pypa.io/en/latest/pyproject_toml.html
+# https://www.freecodecamp.org/news/how-to-create-and-upload-your-first-python-package-to-pypi/
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "open-exchange"
+authors = [{ name = "Open Exchange Labs, Inc.", email = "ox-data-eng@opendoor.com" }]
+readme = "README.md"
+license = { file = "LICENSE.md" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+]
+dynamic = ["version", "description"]
+requires-python = ">=3.7"
+dependencies = [
+    "certifi==2024.2.2",
+    "charset-normalizer==2.0.12",
+    "idna==3.6",
+    "requests==2.27.1",
+    "urllib3==1.26.18",
+]
+
+[project.urls]
+Home = "https://github.com/opendoor-labs/open-exchange-python"
+
+[tool.poetry]
+# Use Poetry only for dependency management, not packaging.
+package-mode = false
+
+name = "open-exchange"
+version = "0.1.0"
+description = "Open Exchange Python SDK"
+authors = ["Open Exchange Labs, Inc. <ox-data-eng@opendoor.com>"]
+license = "MIT"
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.6"
+requests = "2.27.1"
+
+[tool.poetry.group.dev.dependencies]
+flit = "^3.9.0"
+
+
+#[tool.flit.metadata]
+#module = "open_exchange"
+#author = "Open Exchange Labs, Inc."
+#author-email = ""
+#home-page = ""
+
+
+

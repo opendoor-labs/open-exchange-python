@@ -22,3 +22,24 @@ requires-python = ">=3.7"
 
 [project.urls]
 Home = "https://github.com/opendoor-labs/open-exchange-python"
+
+[tool.poetry]
+name = "open-exchange"
+#packages = [{ include = "open_exchange", from = "src" }]
+version = "0.1.0"
+description = "Open Exchange Python SDK"
+authors = ["Open Exchange Labs, Inc. <ox-data-eng@opendoor.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+#[tool.poetry.dev-dependencies]
+#pytest = "^5.2"
+
+#[tool.flit.metadata]
+#module = "open_exchange"
+#author = "Open Exchange Labs, Inc."
+#author-email = ""
+#home-page = ""

@@ -19,27 +19,42 @@ classifiers = [
 ]
 dynamic = ["version", "description"]
 requires-python = ">=3.7"
+dependencies = [
+    "certifi==2024.2.2",
+    "charset-normalizer==2.0.12",
+    "idna==3.6",
+    "requests==2.27.1",
+    "urllib3==1.26.18",
+]
 
 [project.urls]
 Home = "https://github.com/opendoor-labs/open-exchange-python"
 
 [tool.poetry]
+# Use Poetry only for dependency management, not packaging.
+package-mode = false
+
 name = "open-exchange"
-#packages = [{ include = "open_exchange", from = "src" }]
 version = "0.1.0"
 description = "Open Exchange Python SDK"
 authors = ["Open Exchange Labs, Inc. <ox-data-eng@opendoor.com>"]
 license = "MIT"
 readme = "README.md"
 
+
 [tool.poetry.dependencies]
 python = "^3.6"
+requests = "2.27.1"
 
-#[tool.poetry.dev-dependencies]
-#pytest = "^5.2"
+[tool.poetry.group.dev.dependencies]
+flit = "^3.9.0"
+
 
 #[tool.flit.metadata]
 #module = "open_exchange"
 #author = "Open Exchange Labs, Inc."
 #author-email = ""
 #home-page = ""
+
+
+

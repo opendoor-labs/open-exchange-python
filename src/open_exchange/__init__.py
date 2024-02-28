@@ -1,4 +1,4 @@
-"""Open Exchange Data API Python SDK."""
+"""Open Exchange Python SDK."""
 
-__version__ = '0.1'
+__version__ = '0.1.2'
 

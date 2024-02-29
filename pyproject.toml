@@ -1,6 +1,5 @@
 # https://packaging.python.org/en/latest/specifications/pyproject-toml/#pyproject-toml-spec
 # https://flit.pypa.io/en/latest/pyproject_toml.html
-# https://www.freecodecamp.org/news/how-to-create-and-upload-your-first-python-package-to-pypi/
 
 [build-system]
 requires = ["flit_core >=3.2,<4"]

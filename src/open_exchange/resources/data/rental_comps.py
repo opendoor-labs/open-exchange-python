@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING, Iterable
 import more_itertools
 
 # 1st Party Libraries
-from open_exchange.contants import MAX_ADDRESSES_PER_REQUEST, MAX_CONCURRENT_REQUESTS
+from open_exchange.contants import MAX_ADDRESSES_PER_RENTAL_COMPS_REQUEST, MAX_CONCURRENT_REQUESTS
 from open_exchange.resource import APIResource
 from open_exchange.types import AddressFields, RentalCompsFilters, RentalCompsResult
 
@@ -29,7 +29,7 @@ class RentalComps(APIResource):
         *,
         filters: RentalCompsFilters | None = None,
         num_comps: int | None = 10,
-        max_addresses_per_request: int = MAX_ADDRESSES_PER_REQUEST,
+        max_addresses_per_request: int = MAX_ADDRESSES_PER_RENTAL_COMPS_REQUEST,
     ) -> Iterable[RentalCompsResult]:
         """
         Fetches rental comps for the given addresses.
@@ -65,7 +65,7 @@ class RentalComps(APIResource):
         """
         Returns the API code for the given result.
 
-        This logic will be moved to the API server in the future.
+        TODO: This logic will be moved to the API server in the future.
         """
         if isinstance(result.get('api_code'), int):
             return result['api_code']

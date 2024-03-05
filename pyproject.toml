@@ -17,7 +17,7 @@ classifiers = [
     "Development Status :: 3 - Alpha",
 ]
 dynamic = ["version", "description"]
-requires-python = ">=3.6"
+requires-python = ">=3.6.2,<4.0.0"
 dependencies = [
     "certifi==2024.2.2",
     "charset-normalizer==2.0.12",
@@ -34,16 +34,43 @@ Home = "https://github.com/opendoor-labs/open-exchange-python"
 package-mode = false
 
 name = "open-exchange"
-version = "0.1.0"
 description = "Open Exchange Python SDK"
 authors = ["Open Exchange Labs, Inc. <ox-data-eng@opendoor.com>"]
-license = "MIT"
-readme = "README.md"
-
 
 [tool.poetry.dependencies]
-python = "^3.6"
-requests = "2.27.1"
+python = "^3.6.2, <4.0.0"
+requests = "^2.27.1"
+cached-property = { version = "^1.5.2", python = "<3.8" }  # Included in the standard library in Python 3.8+
+more-itertools = "^8.14.0"
+urllib3 = ">1"
 
 [tool.poetry.group.dev.dependencies]
+black = ">=22.8.0"  # Ruff requires Python >=3.7
 flit = "^3.9.0"
+isort = ">=5.10.1"  # Ruff requires Python >=3.7
+pytest = "^7.0.1"
+
+[tool.black]
+# https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html
+line-length = 120
+target-version = ["py36"]  # Python 3.6
+skip-string-normalization = true  # TODO: Decide on blue vs black string normalization.
+
+[tool.isort]
+# https://pycqa.github.io/isort/docs/configuration/options.html
+color_output = true
+known_first_party = ["opendoor"]  # Is Opendoor a first party or 3rd party?
+line_length = 120
+profile = "black"
+py_version = 36  # Python 3.6
+remove_redundant_aliases = true
+skip_gitignore = true
+
+import_heading_stdlib = "Standard Library"
+import_heading_thirdparty = "Third-Party Libraries"
+import_heading_firstparty = "1st Party Libraries"
+import_heading_localfolder = "Local Folder"
+
+# Consistenly use PEP 563-style annotations, avoids common confusion and issues.
+add_imports = ["from __future__ import annotations"]
+force_adds = true

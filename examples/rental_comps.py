@@ -5,7 +5,7 @@ import open_exchange
 from open_exchange.types import AddressFields, RentalCompsFilters, RentalCompsResult
 
 # get API KEY from environment variable OPEN_EXCHANGE_API_KEY
-client = open_exchange.OpenExchangeClient(base_url='http://localhost:5500/api/v2')
+client = open_exchange.OpenExchangeClient()
 
 addresses: list[AddressFields] = [
     {

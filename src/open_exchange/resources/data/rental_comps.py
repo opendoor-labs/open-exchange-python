@@ -58,6 +58,7 @@ class RentalComps(APIResource):
         for future in concurrent.futures.as_completed(futures):
             for result in future.result()['results']:  # type: RentalCompsResult
                 result['api_code'] = self._result_api_code(result)
+                # TODO: Retry logic will be added here in the future.
                 yield result
 
     @staticmethod

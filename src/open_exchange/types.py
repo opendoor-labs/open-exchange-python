@@ -1,4 +1,9 @@
-from typing import TypedDict, Optional, Sequence
+from __future__ import annotations
+
+# Standard Library
+import enum
+from datetime import date
+from typing import Optional, Sequence, TypedDict, Union
 
 
 class AddressFields(TypedDict, total=False):
@@ -268,6 +273,162 @@ class RentalComp(TypedDict):
     """
 
 
+class FilterByDateRange(TypedDict):
+    min: date
+    """
+    The minimum date of the range.
+    """
+
+    max: date
+    """
+    The maximum date of the range.
+    """
+
+
+class FilterByNumericRange(TypedDict):
+    min: float
+    """
+    The minimum value of the range.
+    """
+
+    max: float
+    """
+    The maximum value of the range.
+    """
+
+
+class FilterRelativeNumeric(TypedDict):
+    relative: float
+    """
+    The relative value to use for the filter. For example, if the value is `10`,
+    the filter will use the value of the subject property and filter by +/- `10`
+    of that value.
+    """
+
+
+DateFilterType = Union[FilterByDateRange, FilterRelativeNumeric]
+NumericFilterType = Union[FilterByNumericRange, FilterRelativeNumeric]
+
+
+class ListingStatus(str, enum.Enum):
+    ACTIVE = 'active'
+    """
+    The property is currently available for rent.
+    """
+
+    REMOVED = 'removed'
+    """
+    The listing associated with this property is no longer active.
+    """
+
+    CLOSED = 'closed'
+    """
+    The property was previously available for rent but has since been rented
+    out.
+    """
+
+
+class RentalCompsFilters(TypedDict, total=False):
+    bedrooms_total: NumericFilterType | None
+    """
+    When the **`FilterRelativeNumeric`** is used, only comps which have a number
+    of bedrooms that are within the provided `value` of the supplied address.
+    For example, providing a `value` of `1` for an address that has `2` bedrooms
+    will return only comps that have between (inclusive) `2+1 = 3` and `2-1 = 1`
+    bedrooms.
+
+    When the **`FilterByNumericRange* is used, only comps with a number of
+    bedrooms that fit within the supplied minimum (inclusive) and maximum value
+    (inclusive).
+    """
+
+    bathrooms_full: NumericFilterType | None
+    """
+    When the **`FilterRelativeNumeric`** is used, only comps which have a number
+    of full bathrooms that are within the provided `value` of the supplied
+    address. For example, providing a value of `2` for an address that has `3`
+    full bathrooms will return comps that have between (inclusive) `3+2 = 5` and
+    `3-2 = 1` full bathrooms.
+
+    When the **`FilterByNumericRange`** is used, only comps with a number of
+    full bathrooms that fit within the supplied minimum (inclusive) and maximum
+    value (inclusive).
+    """
+
+    bathrooms_half: NumericFilterType | None
+    """
+    When the **`FilterRelativeNumeric`** is used, only comps which have a number
+    of half bathrooms that are within the provided `value` of the supplied
+    address. For example, providing a value of `1` for an address that has `2`
+    half bathrooms will return comps that have between (inclusive) `2+1 = 3`
+    and `2-1 = 1` half bathrooms.
+
+    When the **`FilterByNumericRange`** is used, only comps with a number of
+    half bathrooms that fit within the supplied minimum (inclusive) and maximum
+    value (inclusive).
+    """
+
+    distance: float | None
+    """
+    The maximum distance of the rental comp from the requested address. If no 
+    distance filter was provided, a default value of 2 will be used. This
+    distance value provided must be greater than 0 and less than or equal to 25.
+    """
+
+    min_similarity_score: float | None
+    """
+    Lower bound for the similarity score filter for nearby properties to be 
+    considered as comps. Float within the range from 0 (Least similar) to 1
+    (Most similar).
+    """
+
+    living_area_sqft: NumericFilterType | None
+    """
+    When the **`FilterRelativeNumeric`** is used, only comps which have a square
+    footage that is within the provided percentage `value` of the supplied
+    address. For example, providing a value of `20` for an address that has
+    `2500` square feet will return comps that have between (inclusive) `3000`
+    and `2000` square feet as we look at +/- `20%` of the subject property
+    square footage.
+
+    When the **`FilterByNumericRange`** is used, only comps with a square
+    footage that fits within the supplied minimum (inclusive) and maximum value
+    (inclusive).
+    """
+
+    date: DateFilterType | None
+    """
+    When the **`FilterRelativeNumeric`** is used, only comps which have a
+    `year_built` within provided `value` years of the supplied address. For
+    example, providing a value of `2` for an address that was built in `2019`
+    square feet will return comps that were built between `2017` and `2021` as
+    we look at +/- `2` years of the subject address.
+
+    When the **`FilterByNumericRange`** is used, only comps built within the
+    supplied minimum (inclusive) and maximum value (inclusive) years will be
+    returned.
+    """
+
+    year_built: NumericFilterType | None
+    """
+    When the **`FilterRelativeNumeric`** is used, only comps which have a
+    `year_built` within provided `value` years of the supplied address. For
+    example, providing a value of `2` for an address that was built in `2019`
+    square feet will return comps that were built between `2017` and `2021` as
+    we look at +/- `2` years of the subject address.
+
+    When the **`FilterByNumericRange`** is used, only comps built within the
+    supplied minimum (inclusive) and maximum value (inclusive) years will be
+    returned.
+    """
+
+    statuses: Sequence[ListingStatus]
+    """
+    Only comps with statuses that match at least one of the statuses within the
+    list supplied will be returned.
+    """
+
+
 class RentalCompsResult(TypedDict):
     subject_property_details: Optional[PropertyDetails]
     """
@@ -285,10 +446,9 @@ class RentalCompsResult(TypedDict):
     a message describing the error. This field is optional.
     """
 
-    error_code: Optional[str]
+    api_code: int
     """
-    If an error occurred while processing the request, this field will contain
-    a code describing the error. This field is optional.
+    An HTTP status code indicating the result of the address request.
     """
 
     token: Optional[str]

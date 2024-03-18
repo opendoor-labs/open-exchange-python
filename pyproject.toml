@@ -72,5 +72,5 @@ import_heading_firstparty = "1st Party Libraries"
 import_heading_localfolder = "Local Folder"
 
 # Consistenly use PEP 563-style annotations, avoids common confusion and issues.
-add_imports = ["from __future__ import annotations"]
+# add_imports = ["from __future__ import annotations"]  # TODO: Enable this once we're on Python 3.7+
 force_adds = true

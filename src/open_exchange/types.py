@@ -1,9 +1,9 @@
-from __future__ import annotations
-
 # Standard Library
 import enum
 from datetime import date
-from typing import Optional, Sequence, TypedDict, Union
+from typing import Optional, Sequence, Union
+
+from open_exchange.typing import TypedDict
 
 
 class AddressFields(TypedDict, total=False):
@@ -329,7 +329,7 @@ class ListingStatus(str, enum.Enum):
 
 
 class RentalCompsFilters(TypedDict, total=False):
-    bedrooms_total: NumericFilterType | None
+    bedrooms_total: Optional[NumericFilterType]
     """
     When the **`FilterRelativeNumeric`** is used, only comps which have a number
     of bedrooms that are within the provided `value` of the supplied address.
@@ -342,7 +342,7 @@ class RentalCompsFilters(TypedDict, total=False):
     (inclusive).
     """
 
-    bathrooms_full: NumericFilterType | None
+    bathrooms_full: Optional[NumericFilterType]
     """
     When the **`FilterRelativeNumeric`** is used, only comps which have a number
     of full bathrooms that are within the provided `value` of the supplied
@@ -355,7 +355,7 @@ class RentalCompsFilters(TypedDict, total=False):
     value (inclusive).
     """
 
-    bathrooms_half: NumericFilterType | None
+    bathrooms_half: Optional[NumericFilterType]
     """
     When the **`FilterRelativeNumeric`** is used, only comps which have a number
     of half bathrooms that are within the provided `value` of the supplied
@@ -368,21 +368,21 @@ class RentalCompsFilters(TypedDict, total=False):
     value (inclusive).
     """
 
-    distance: float | None
+    distance: Optional[float]
     """
     The maximum distance of the rental comp from the requested address. If no 
     distance filter was provided, a default value of 2 will be used. This
     distance value provided must be greater than 0 and less than or equal to 25.
     """
 
-    min_similarity_score: float | None
+    min_similarity_score: Optional[float]
     """
     Lower bound for the similarity score filter for nearby properties to be 
     considered as comps. Float within the range from 0 (Least similar) to 1
     (Most similar).
     """
 
-    living_area_sqft: NumericFilterType | None
+    living_area_sqft: Optional[NumericFilterType]
     """
     When the **`FilterRelativeNumeric`** is used, only comps which have a square
     footage that is within the provided percentage `value` of the supplied
@@ -396,7 +396,7 @@ class RentalCompsFilters(TypedDict, total=False):
     (inclusive).
     """
 
-    date: DateFilterType | None
+    date: Optional[DateFilterType]
     """
     When the **`FilterRelativeNumeric`** is used, only comps which have a
     `year_built` within provided `value` years of the supplied address. For
@@ -409,7 +409,7 @@ class RentalCompsFilters(TypedDict, total=False):
     returned.
     """
 
-    year_built: NumericFilterType | None
+    year_built: Optional[NumericFilterType]
     """
     When the **`FilterRelativeNumeric`** is used, only comps which have a
     `year_built` within provided `value` years of the supplied address. For

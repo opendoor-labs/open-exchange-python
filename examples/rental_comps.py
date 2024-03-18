@@ -1,13 +1,13 @@
-from __future__ import annotations
-
 # 1st Party Libraries
+from typing import List
+
 import open_exchange
-from open_exchange.types import AddressFields, RentalCompsFilters, RentalCompsResult
+from open_exchange.types import AddressFields, RentalCompsFilters
 
 # get API KEY from environment variable OPEN_EXCHANGE_API_KEY
 client = open_exchange.OpenExchangeClient()
 
-addresses: list[AddressFields] = [
+addresses: List[AddressFields] = [
     {
         'street': '1850 NW 37th St',
         'city': 'Oakland Park',
@@ -24,7 +24,7 @@ filters: RentalCompsFilters = {
 }
 
 # get rental comps for a iterable of addresses with filters
-for result in client.data.rental_comps.fetch(addresses=addresses, filters=filters):  # type: RentalCompsResult
+for result in client.data.rental_comps.fetch(addresses=addresses, filters=filters):
     assert result['token'] == 'client-provided-token-1'
 
     print('Subject property details:', result['subject_property_details'])

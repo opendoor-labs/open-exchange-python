@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 # 1st Party Libraries
 from open_exchange.compat import cached_property
 from open_exchange.resource import APIResource

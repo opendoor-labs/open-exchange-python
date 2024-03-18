@@ -1,9 +1,7 @@
-from __future__ import annotations
-
 # Standard Library
 import concurrent.futures
 from http import HTTPStatus
-from typing import TYPE_CHECKING, Iterable
+from typing import TYPE_CHECKING, Iterable, Optional
 
 # Third-Party Libraries
 import more_itertools
@@ -19,7 +17,7 @@ if TYPE_CHECKING:
 
 
 class RentalComps(APIResource):
-    def __init__(self, client: OpenExchangeClient) -> None:
+    def __init__(self, client: 'OpenExchangeClient') -> None:
         super().__init__(client)
         self._executor = concurrent.futures.ThreadPoolExecutor(max_workers=MAX_CONCURRENT_REQUESTS)
 
@@ -27,8 +25,8 @@ class RentalComps(APIResource):
         self,
         addresses: Iterable[AddressFields],
         *,
-        filters: RentalCompsFilters | None = None,
-        num_comps: int | None = 10,
+        filters: Optional[RentalCompsFilters] = None,
+        num_comps: Optional[int] = 10,
         max_addresses_per_request: int = MAX_ADDRESSES_PER_RENTAL_COMPS_REQUEST,
     ) -> Iterable[RentalCompsResult]:
         """

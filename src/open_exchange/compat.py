@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 try:
     # Standard Library
     from functools import cached_property

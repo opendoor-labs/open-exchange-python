@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 # Standard Library
 from typing import TYPE_CHECKING
 
@@ -9,8 +7,8 @@ if TYPE_CHECKING:
 
 
 class APIResource:
-    client: OpenExchangeClient
+    client: 'OpenExchangeClient'
 
-    def __init__(self, client: OpenExchangeClient) -> None:
+    def __init__(self, client: 'OpenExchangeClient') -> None:
         self.client = client
         self.request = client._request

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 DEFAULT_MAX_RETRIES = 2
 DEFAULT_RETRY_BACKOFF_FACTOR = 0.1
 

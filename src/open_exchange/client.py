@@ -1,9 +1,8 @@
-from __future__ import annotations
-
 # Standard Library
 import logging
 import os
 from http import HTTPStatus
+from typing import Optional
 
 # Third-Party Libraries
 import requests
@@ -25,8 +24,8 @@ class OpenExchangeClient:
     def __init__(
         self,
         *,
-        api_key: str | None = None,
-        base_url: str | None = None,
+        api_key: Optional[str] = None,
+        base_url: Optional[str] = None,
     ) -> None:
         if api_key is None:
             api_key = os.getenv('OPEN_EXCHANGE_API_KEY')
@@ -43,7 +42,7 @@ class OpenExchangeClient:
 
         self.data = resources.Data(self)
 
-    def _request(self, method: str, path: str, body: dict | None = None) -> dict:
+    def _request(self, method: str, path: str, body: Optional[dict] = None) -> dict:
         session = requests.Session()
         session.mount('https://', requests.adapters.HTTPAdapter(max_retries=self._retry_config))
 

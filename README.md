@@ -24,7 +24,6 @@ import open_exchange
 from open_exchange.types.data import rental_comps_fetch_params, rental_comps_response
 from typing import List
 
-# get API KEY from environment variable OPEN_EXCHANGE_API_KEY
 client = open_exchange.OpenExchangeClient()
 
 addresses: List[rental_comps_fetch_params.Address] = [

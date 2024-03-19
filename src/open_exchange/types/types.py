@@ -312,17 +312,17 @@ NumericFilterType = Union[FilterByNumericRange, FilterRelativeNumeric]
 
 
 class ListingStatus(str, enum.Enum):
-    ACTIVE = 'active'
+    ACTIVE = "active"
     """
     The property is currently available for rent.
     """
 
-    REMOVED = 'removed'
+    REMOVED = "removed"
     """
     The listing associated with this property is no longer active.
     """
 
-    CLOSED = 'closed'
+    CLOSED = "closed"
     """
     The property was previously available for rent but has since been rented
     out.

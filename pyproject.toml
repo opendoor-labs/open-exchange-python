@@ -60,7 +60,7 @@ types-urllib3 = "^1.26.25.14"
 # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html
 line-length = 120
 target-version = ["py36"]  # Python 3.6
-skip-string-normalization = true  # TODO: Decide on blue vs black string normalization.
+skip-string-normalization = false  # Change to single quotes when we switch to Ruff.
 
 [tool.isort]
 # https://pycqa.github.io/isort/docs/configuration/options.html

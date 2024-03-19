@@ -28,28 +28,28 @@ class OpenExchangeClient:
         base_url: Optional[str] = None,
     ) -> None:
         if api_key is None:
-            api_key = os.getenv('OPEN_EXCHANGE_API_KEY')
+            api_key = os.getenv("OPEN_EXCHANGE_API_KEY")
         if api_key is None:
             raise OpenExchangeError(
                 'API key is required. Pass it in the "api_key" argument or set the "OPEN_EXCHANGE_API_KEY" '
-                'environment variable.'
+                "environment variable."
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = 'https://directaccess.opendoor.com/api/v2'
+            base_url = "https://directaccess.opendoor.com/api/v2"
         self.base_url = base_url
 
         self.data = resources.Data(self)
 
     def _request(self, method: str, path: str, body: Optional[dict] = None) -> dict:
         session = requests.Session()
-        session.mount('https://', requests.adapters.HTTPAdapter(max_retries=self._retry_config))
+        session.mount("https://", requests.adapters.HTTPAdapter(max_retries=self._retry_config))
 
         response = session.request(
             method=method,
-            url=f'{self.base_url}{path}',
-            headers={'AUTHORIZATION': self.api_key},
+            url=f"{self.base_url}{path}",
+            headers={"AUTHORIZATION": self.api_key},
             json=body,
         )
         response.raise_for_status()  # Raise custom exception for HTTP errors here?
@@ -66,5 +66,5 @@ class OpenExchangeClient:
                 HTTPStatus.SERVICE_UNAVAILABLE,  # 503 status code
             },
             # POST is not in the default set of allowed methods. Override the default to include it.
-            allowed_methods=urllib3.util.retry.Retry.DEFAULT_ALLOWED_METHODS | {'POST'},
+            allowed_methods=urllib3.util.retry.Retry.DEFAULT_ALLOWED_METHODS | {"POST"},
         )

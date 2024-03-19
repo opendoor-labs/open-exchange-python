@@ -17,7 +17,7 @@ pip install openexchange
 
 ## Usage
 
-See the [examples](examples) directory for examples of how to use the SDK.
+See the [examples][0] directory for examples of how to use the SDK.
 
 ```python
 import open_exchange
@@ -59,3 +59,6 @@ We use the Python standard library [`logging`](https://docs.python.org/3/library
 ## Requirements
 
 Python 3.6 or higher.
+
+
+[0]: https://github.com/opendoor-labs/open-exchange-python/tree/main/examples

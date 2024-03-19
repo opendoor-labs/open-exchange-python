@@ -18,15 +18,9 @@ __all__ = [
     "FiltersBathroomsHalf",
     "FiltersBathroomsHalfFilterByNumericRange",
     "FiltersBathroomsHalfFilterRelativeNumeric",
-    "FiltersBaths",
-    "FiltersBathsFilterByNumericRange",
-    "FiltersBathsFilterRelativeNumeric",
     "FiltersBedroomsTotal",
     "FiltersBedroomsTotalFilterByNumericRange",
     "FiltersBedroomsTotalFilterRelativeNumeric",
-    "FiltersBeds",
-    "FiltersBedsFilterByNumericRange",
-    "FiltersBedsFilterRelativeNumeric",
     "FiltersDate",
     "FiltersDateFilterByDateRange",
     "FiltersDateFilterRelativeNumeric",
@@ -126,26 +120,6 @@ class FiltersBathroomsHalfFilterRelativeNumeric(TypedDict, total=False):
 FiltersBathroomsHalf = Union[FiltersBathroomsHalfFilterByNumericRange, FiltersBathroomsHalfFilterRelativeNumeric]
 
 
-class FiltersBathsFilterByNumericRange(TypedDict, total=False):
-    max: Required[float]
-    """The maximum value of the range."""
-
-    min: Required[float]
-    """The minimum value of the range."""
-
-
-class FiltersBathsFilterRelativeNumeric(TypedDict, total=False):
-    relative: Required[float]
-    """The relative value to use for the filter.
-
-    For example, if the value is `10`, the filter will use the value of the subject
-    property and filter by +/- `10` of that value.
-    """
-
-
-FiltersBaths = Union[FiltersBathsFilterByNumericRange, FiltersBathsFilterRelativeNumeric]
-
-
 class FiltersBedroomsTotalFilterByNumericRange(TypedDict, total=False):
     max: Required[float]
     """The maximum value of the range."""
@@ -164,26 +138,6 @@ class FiltersBedroomsTotalFilterRelativeNumeric(TypedDict, total=False):
 
 
 FiltersBedroomsTotal = Union[FiltersBedroomsTotalFilterByNumericRange, FiltersBedroomsTotalFilterRelativeNumeric]
-
-
-class FiltersBedsFilterByNumericRange(TypedDict, total=False):
-    max: Required[float]
-    """The maximum value of the range."""
-
-    min: Required[float]
-    """The minimum value of the range."""
-
-
-class FiltersBedsFilterRelativeNumeric(TypedDict, total=False):
-    relative: Required[float]
-    """The relative value to use for the filter.
-
-    For example, if the value is `10`, the filter will use the value of the subject
-    property and filter by +/- `10` of that value.
-    """
-
-
-FiltersBeds = Union[FiltersBedsFilterByNumericRange, FiltersBedsFilterRelativeNumeric]
 
 
 class FiltersDateFilterByDateRange(TypedDict, total=False):
@@ -274,21 +228,6 @@ class Filters(TypedDict, total=False):
     (inclusive).
     """
 
-    baths: Optional[FiltersBaths]
-    """This field is being replaced by `bathrooms_full`.
-
-    Please use `bathrooms_full` instead. Using this field will raise a 422 exception
-    and ask you to use `bathrooms_full`. When the **`FilterRelativeNumeric`** is
-    used, only comps which have a number offull bathrooms that are within the
-    provided `value` of the supplied address. For example, providing a value of `2`
-    for an address that has `3` full bathrooms will return comps that have between
-    (inclusive) `3+2 = 5` and `3-2 = 1` full bathrooms.
-
-    When the **`FilterByNumericRange`** is used, only comps with a number of full
-    bathrooms that fit within the supplied minimum (inclusive) and maximum value
-    (inclusive).
-    """
-
     bedrooms_total: Optional[FiltersBedroomsTotal]
     """This field is replacing `beds`.
 
@@ -297,21 +236,6 @@ class Filters(TypedDict, total=False):
     example, providing a `value` of `1` for an address that has `2` bedrooms will
     return only comps that have between (inclusive) `2+1 = 3` and `2-1 = 1`
     bedrooms.
-
-    When the **`FilterByNumericRange`** is used, only comps with a number of
-    bedrooms that fit within the supplied minimum (inclusive) and maximum value
-    (inclusive).
-    """
-
-    beds: Optional[FiltersBeds]
-    """This field is being replaced by `bedrooms_total`.
-
-    Please use `bedrooms_total` instead. Any value set here will override the
-    **`bedrooms_total`** field. When the **`FilterRelativeNumeric`** is used, only
-    comps which have a number of bedroomsthat are within the provided `value` of the
-    supplied address. For example, providing a `value` of `1` for an address that
-    has `2` bedrooms will return only comps that have between (inclusive) `2+1 = 3`
-    and `2-1 = 1` bedrooms.
 
     When the **`FilterByNumericRange`** is used, only comps with a number of
     bedrooms that fit within the supplied minimum (inclusive) and maximum value

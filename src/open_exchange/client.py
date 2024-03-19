@@ -1,6 +1,7 @@
 # Standard Library
 import logging
 import os
+import platform
 from typing import Optional
 
 # Third-Party Libraries
@@ -9,12 +10,16 @@ import requests.adapters
 import urllib3.util.retry
 
 # 1st Party Libraries
+import open_exchange
 from open_exchange import resources
 from open_exchange.compat import cached_property
 from open_exchange.contants import DEFAULT_MAX_RETRIES, DEFAULT_RETRY_BACKOFF_FACTOR, DEFAULT_RETRYABLE_STATUS_CODES
 from open_exchange.exceptions import OpenExchangeError
 
 logger = logging.getLogger(__name__)
+
+PYTHON_VERSION = platform.python_version()
+SDK_VERSION = open_exchange.__version__
 
 
 class OpenExchangeClient:
@@ -48,7 +53,11 @@ class OpenExchangeClient:
         response = session.request(
             method=method,
             url=f"{self.base_url}{path}",
-            headers={"AUTHORIZATION": self.api_key},
+            headers={
+                "AUTHORIZATION": self.api_key,
+                "X-PYTHON-VERSION": PYTHON_VERSION,
+                "X-SDK-VERSION": SDK_VERSION,
+            },
             json=body,
         )
         response.raise_for_status()  # Raise custom exception for HTTP errors here?

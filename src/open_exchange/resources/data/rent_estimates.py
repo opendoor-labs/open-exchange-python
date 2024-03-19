@@ -32,6 +32,8 @@ class RentEstimates(APIResource):
         Args:
           addresses: An array of address objects, each specifying a property location.
 
+          max_addresses_per_request: The maximum number of addresses to include in each request.
+
         Returns:
           An iterable of rent estimates results.
         """

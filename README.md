@@ -28,10 +28,10 @@ client = open_exchange.OpenExchangeClient()
 
 addresses: List[rental_comps_fetch_params.Address] = [
     {
-        "street": "1850 NW 37th St",
-        "city": "Oakland Park",
-        "state": "FL",
-        "postal_code": "33309",
+        "street": " 5201 S 44th St",
+        "city": "Omaha",
+        "state": "NE",
+        "postal_code": "68107",
         "token": "client-provided-token-1",
     }
 ]

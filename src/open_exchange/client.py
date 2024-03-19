@@ -1,7 +1,6 @@
 # Standard Library
 import logging
 import os
-from http import HTTPStatus
 from typing import Optional
 
 # Third-Party Libraries
@@ -12,7 +11,7 @@ import urllib3.util.retry
 # 1st Party Libraries
 from open_exchange import resources
 from open_exchange.compat import cached_property
-from open_exchange.contants import DEFAULT_MAX_RETRIES, DEFAULT_RETRY_BACKOFF_FACTOR
+from open_exchange.contants import DEFAULT_MAX_RETRIES, DEFAULT_RETRY_BACKOFF_FACTOR, DEFAULT_RETRYABLE_STATUS_CODES
 from open_exchange.exceptions import OpenExchangeError
 
 logger = logging.getLogger(__name__)
@@ -60,11 +59,7 @@ class OpenExchangeClient:
         return urllib3.util.retry.Retry(
             total=DEFAULT_MAX_RETRIES,
             backoff_factor=DEFAULT_RETRY_BACKOFF_FACTOR,
-            status_forcelist={
-                HTTPStatus.BAD_GATEWAY,  # 502 status code
-                HTTPStatus.GATEWAY_TIMEOUT,  # 504 status code
-                HTTPStatus.SERVICE_UNAVAILABLE,  # 503 status code
-            },
+            status_forcelist=DEFAULT_RETRYABLE_STATUS_CODES,
             # POST is not in the default set of allowed methods. Override the default to include it.
             allowed_methods=urllib3.util.retry.Retry.DEFAULT_ALLOWED_METHODS | {"POST"},
         )

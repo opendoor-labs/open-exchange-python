@@ -294,6 +294,9 @@ class Result(BaseModel):
     error_message: Optional[str] = None
     """The error message if the system was unable to process this address."""
 
+    api_code: Optional[int] = None
+    """An HTTP status code indicating the result of the address request."""
+
     has_errors: Optional[bool] = None
     """Boolean indicating if the system was unable to process this address."""
 

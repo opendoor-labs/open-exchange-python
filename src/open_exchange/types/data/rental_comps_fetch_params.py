@@ -1,13 +1,15 @@
-
 # Standard Library
 from datetime import date
 from typing import Iterable, List, Optional, Union
 
 # Third-Party Libraries
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, Required
+
+# 1st Party Libraries
+from open_exchange.typing import TypedDict
 
 __all__ = [
-    "RentalCompCreateParams",
+    "RentalCompFetchParams",
     "Address",
     "Filters",
     "FiltersBathroomsFull",
@@ -37,7 +39,7 @@ __all__ = [
 ]
 
 
-class RentalCompCreateParams(TypedDict, total=False):
+class RentalCompFetchParams(TypedDict, total=False):
     addresses: "Required[Iterable[Address]]"
     """An array of address objects, each specifying a property location."""
 

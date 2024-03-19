@@ -109,9 +109,6 @@ class Result(BaseModel):
     error_message: Optional[str] = None
     """The error message if the system was unable to process this address."""
 
-    has_errors: Optional[bool] = None
-    """Boolean indicating if the system was unable to process this address."""
-
     property_details: Optional[ResultPropertyDetails] = None
     """The property details for the given address."""
 

@@ -1,14 +1,16 @@
-
 # Standard Library
 from typing import Iterable, Optional
 
 # Third-Party Libraries
-from typing_extensions import Required, TypedDict
+from typing_extensions import Required
 
-__all__ = ["PropertyValueCreateParams", "Address"]
+# 1st Party Libraries
+from open_exchange.typing import TypedDict
+
+__all__ = ["PropertyValueFetchParams", "Address"]
 
 
-class PropertyValueCreateParams(TypedDict, total=False):
+class PropertyValueFetchParams(TypedDict, total=False):
     addresses: "Required[Iterable[Address]]"
     """An array of address objects, each specifying a property location."""
 

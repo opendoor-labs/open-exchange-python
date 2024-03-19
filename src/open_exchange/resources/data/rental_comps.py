@@ -30,11 +30,20 @@ class RentalComps(APIResource):
         max_addresses_per_request: int = MAX_ADDRESSES_PER_RENTAL_COMPS_REQUEST,
     ) -> Iterable[RentalCompsResult]:
         """
-        Fetches rental comps for the given addresses.
+        Fetch rental comps for addresses
 
         Args:
-            addresses: An iterator of address fields.
-            max_addresses_per_request: The maximum number of addresses to include in each request.
+          addresses: An array of address objects, each specifying a property location.
+
+          filters: An _optional_ object containing criteria to refine the rental comps search, such
+              as date range, price, number of bedrooms, etc. If no filters are provided, the
+              search will include all available comps.
+
+          num_comps: An _optional_ int containing the number of rental comps to return per subject
+              address. The minimum value is 1 and the maximum value is 50. If no value is
+              provided, we will return our top 10 comps.
+
+          max_addresses_per_request: The maximum number of addresses to include in each request.
 
         Returns:
             An iterator of rental comps results.

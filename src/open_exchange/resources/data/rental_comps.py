@@ -9,7 +9,7 @@ import more_itertools
 # 1st Party Libraries
 from open_exchange.contants import MAX_ADDRESSES_PER_RENTAL_COMPS_REQUEST, MAX_CONCURRENT_REQUESTS
 from open_exchange.resource import APIResource
-from open_exchange.types import AddressFields, RentalCompsFilters, RentalCompsResult
+from open_exchange.types.types import AddressFields, RentalCompsFilters, RentalCompsResult
 
 if TYPE_CHECKING:
     # 1st Party Libraries

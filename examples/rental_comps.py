@@ -1,8 +1,9 @@
-# 1st Party Libraries
+# Standard Library
 from typing import List
 
+# 1st Party Libraries
 import open_exchange
-from open_exchange.types import AddressFields, RentalCompsFilters
+from open_exchange.types.types import AddressFields, RentalCompsFilters
 
 # get API KEY from environment variable OPEN_EXCHANGE_API_KEY
 client = open_exchange.OpenExchangeClient()

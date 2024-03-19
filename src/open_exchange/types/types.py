@@ -3,6 +3,7 @@ import enum
 from datetime import date
 from typing import Optional, Sequence, Union
 
+# 1st Party Libraries
 from open_exchange.typing import TypedDict
 
 
@@ -93,7 +94,7 @@ class PropertyDetails(TypedDict):
     """
     The number of full baths, capped at 5. A full bath contains all 4 of the 4
     elements constituting a bath: Toilet, Sink, Bathtub, or Shower Head. A Full
-    Bath will typically contain four elements; Sink, Toilet, Tub, and Shower 
+    Bath will typically contain four elements; Sink, Toilet, Tub, and Shower
     Head (in tub or stall).
     """
 
@@ -104,7 +105,7 @@ class PropertyDetails(TypedDict):
 
     living_area_sqft: Optional[int]
     """
-    The approximate livable area within the structure, designated in Square 
+    The approximate livable area within the structure, designated in Square
     Feet.
     """
 
@@ -150,7 +151,7 @@ class PropertyDetails(TypedDict):
     encompasses. For example, House or Cabin are the overall structure and
     typically sold or leased as a whole. Multi Family and Docks may be sold
     in whole, but are often sold or leased by unit/slip. This field is the
-    type of structure as opposed to style, which is under the Architectural 
+    type of structure as opposed to style, which is under the Architectural
     Style field.
     """
 
@@ -370,14 +371,14 @@ class RentalCompsFilters(TypedDict, total=False):
 
     distance: Optional[float]
     """
-    The maximum distance of the rental comp from the requested address. If no 
+    The maximum distance of the rental comp from the requested address. If no
     distance filter was provided, a default value of 2 will be used. This
     distance value provided must be greater than 0 and less than or equal to 25.
     """
 
     min_similarity_score: Optional[float]
     """
-    Lower bound for the similarity score filter for nearby properties to be 
+    Lower bound for the similarity score filter for nearby properties to be
     considered as comps. Float within the range from 0 (Least similar) to 1
     (Most similar).
     """

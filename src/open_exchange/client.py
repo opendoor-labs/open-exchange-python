@@ -32,7 +32,7 @@ class OpenExchangeClient:
         if api_key is None:
             raise OpenExchangeError(
                 'API key is required. Pass it in the "api_key" argument or set the "OPEN_EXCHANGE_API_KEY" '
-                + 'environment variable.'
+                'environment variable.'
             )
         self.api_key = api_key
 
@@ -56,7 +56,7 @@ class OpenExchangeClient:
         return response.json()
 
     @cached_property
-    def _retry_config(self):
+    def _retry_config(self) -> urllib3.util.retry.Retry:
         return urllib3.util.retry.Retry(
             total=DEFAULT_MAX_RETRIES,
             backoff_factor=DEFAULT_RETRY_BACKOFF_FACTOR,

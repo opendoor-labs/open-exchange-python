@@ -1,9 +1,9 @@
 # Standard Library
-from typing import List
+from typing import List, Optional
 
 # 1st Party Libraries
 import open_exchange
-from open_exchange.types.data import rental_comps_fetch_params
+from open_exchange.types.data import rental_comps_fetch_params, rental_comps_response
 
 # get API KEY from environment variable OPEN_EXCHANGE_API_KEY
 client = open_exchange.OpenExchangeClient()
@@ -166,7 +166,9 @@ filters: rental_comps_fetch_params.Filters = {
 
 # get rental comps for a iterable of addresses with filters
 ordered_tokens = [address["token"] for address in addresses]
-for result, expected_token in zip(client.data.rental_comps.fetch(addresses=addresses, filters=filters), ordered_tokens):
+for result, expected_token in zip(
+    client.data.rental_comps.fetch(addresses=addresses, filters=filters), ordered_tokens
+):  # type: (rental_comps_response.Result, Optional[str])
     assert result.token == expected_token
 
     print("Subject property details:", result.subject_property_details)

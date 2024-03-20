@@ -13,7 +13,7 @@ info:
     - type: slack
       channel: ox-rent-alerts
     - type: group
-      name: opendoor-labs/security
+      name: opendoor-labs/ox-rent-api
     - type: email
       email: rodrigo.reis@opendoor.com
       description: EM

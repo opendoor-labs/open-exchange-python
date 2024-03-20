@@ -12,7 +12,7 @@ The REST API documentation is available at [https://openexchange.readme.io/](htt
 You can install the package via pip:
 
 ```bash
-pip install openexchange
+pip install open-exchange
 ```
 
 ## Usage

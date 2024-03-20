@@ -1,0 +1,29 @@
+# https://opendoor.atlassian.net/wiki/spaces/ENG/pages/2341896216/Cortex+-+Services+and+Resources
+openapi: 3.0.1
+info:
+  title: Open Exchange Python SDK
+  description: The Open Exchange Python SDK provides access to the Open Exchange REST API from applications written in Python 3.6 and later.
+  x-cortex-git:
+    github:
+      repository: opendoor-labs/open-exchange-python
+  x-cortex-oncall:
+    pagerduty:
+      id: POJFQ2N
+      type: SCHEDULE
+  x-cortex-owners:
+    - type: slack
+      channel: ox-rent-alerts
+    - type: group
+      name: opendoor-labs/ox-rent-api
+    - type: email
+      email: rodrigo.reis@opendoor.com
+      description: EM
+  x-cortex-groups:
+    - python
+    - library
+    - backend
+    - open-exchange
+  x-cortex-link:
+    - name: Code Link
+      type: codelink
+      url: https://github.com/opendoor-labs/open-exchange-python

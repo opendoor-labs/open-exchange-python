@@ -12,7 +12,7 @@ The REST API documentation is available at [https://openexchange.readme.io/](htt
 You can install the package via pip:
 
 ```bash
-pip install openexchange
+pip install open-exchange
 ```
 
 ## Usage
@@ -24,14 +24,15 @@ import open_exchange
 from open_exchange.types.data import rental_comps_fetch_params, rental_comps_response
 from typing import List
 
+# get API KEY from environment variable OPEN_EXCHANGE_API_KEY
 client = open_exchange.OpenExchangeClient()
 
 addresses: List[rental_comps_fetch_params.Address] = [
     {
-        "street": "1850 NW 37th St",
-        "city": "Oakland Park",
-        "state": "FL",
-        "postal_code": "33309",
+        "street": " 5201 S 44th St",
+        "city": "Omaha",
+        "state": "NE",
+        "postal_code": "68107",
         "token": "client-provided-token-1",
     }
 ]

@@ -17,6 +17,11 @@ info:
     - type: email
       email: rodrigo.reis@opendoor.com
       description: EM
+  x-cortex-groups:
+    - python
+    - library
+    - backend
+    - open-exchange
   x-cortex-link:
     - name: Code Link
       type: codelink
